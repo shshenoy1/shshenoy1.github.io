@@ -9,24 +9,21 @@
 <body>
     <div class="container">
         <h1>Bonus Calculator</h1>
-        <form id="bonusForm" class="form">
-            <label for="bonus">Enter your Bonus Component:</label>
-            <input type="number" id="bonus" name="bonus" required>
-            
-            <label for="rating">Select your PDR rating:</label>
-            <select id="rating" name="rating" required>
-                <option value="">Select Rating</option>
-                <option value="1">Unsatisfactory</option>
-                <option value="2">Development needed</option>
-                <option value="3">Within Expectations</option>
-                <option value="4">Exceeding Expectations</option>
-                <option value="5">Outstanding Performance</option>
-            </select>
-
-            <button type="submit">Calculate Bonus</button>
-        </form>
-
-        <div id="bonusResult" class="result"></div>
+        <label for="bonus">Enter your Bonus Component:</label>
+        <input type="number" id="bonus" name="bonus">
+        <br>
+        <label for="rating">Select your PDR rating:</label>
+        <select id="rating">
+            <option value="1">Unsatisfactory</option>
+            <option value="2">Development needed</option>
+            <option value="3">Within Expectations</option>
+            <option value="4">Exceeding Expectations</option>
+            <option value="5">Outstanding Performance</option>
+        </select>
+        <br>
+        <button onclick="calculateBonus()">Calculate</button>
+        <br>
+        <div id="bonusResult"></div>
     </div>
 
     <script src="script.js"></script>

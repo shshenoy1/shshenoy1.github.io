@@ -1,18 +1,24 @@
-document.getElementById('bonusForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+function calculateBonus() {
+    var bonus = parseFloat(document.getElementById("bonus").value);
+    var ratingValue = parseInt(document.getElementById("rating").value);
 
-    var form = event.target;
-    var formData = new FormData(form);
+    // Define rating multipliers
+    var multiplier = {
+        1: [0.0, 0.29],
+        2: [0.30, 0.80],
+        3: [0.80, 1.05],
+        4: [1.06, 1.20],
+        5: [1.21, 1.60]
+    };
 
-    fetch(form.action, {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('bonusResult').innerHTML = data;
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-});
+    // Company component
+    var company_component = 1.787;
+
+    // Calculate bonus range
+    var minBonus = company_component * 0.445 * bonus + multiplier[ratingValue][0] * bonus * 0.555;
+    var maxBonus = company_component * 0.445 * bonus + multiplier[ratingValue][1] * bonus * 0.555;
+
+    // Display the bonus range with two decimal places
+    var resultDiv = document.getElementById("bonusResult");
+    resultDiv.innerHTML = "Bonus Range: [" + minBonus.toFixed(2) + " , " + maxBonus.toFixed(2) + " ]";
+}
