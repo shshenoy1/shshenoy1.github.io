@@ -12,7 +12,7 @@ function calculateBonus() {
     };
 
     // Company component
-    var company_component = 1.787;
+    var company_component = 1.745;
 
     // Calculate bonus range
     var minBonus = company_component * 0.445 * bonus + multiplier[ratingValue][0] * bonus * 0.555;
